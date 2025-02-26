@@ -34,12 +34,12 @@ export default async function handler(req, res) {
             articles = await collection.find({
                 $or: [
                     { title: { $regex: q, $options: "i" } }, // Case-insensitive search in title
-                    { description: { $regex: q, $options: "i" } } // Case-insensitive search in description
+                    { keywords: { $in: [new RegExp(q, "i")] } } // Case-insensitive search in description
                 ]
-            }).toArray();
+            }).sort({ time: -1 }).toArray();
         } else {
             // If no query is provided, retrieve all articles
-            articles = await collection.find().toArray();
+            articles = await collection.find().sort({ time: -1 }).toArray();
         }
 
         console.log("Retrieved articles:", articles); // Log retrieved articles
