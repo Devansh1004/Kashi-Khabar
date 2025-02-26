@@ -36,10 +36,10 @@ def fetch_news():
 	db = client["my_articles"]
 	collection = db["news_articles"]
 
-	# genres = ['sports', 'politics', 'health', 'crime', 'business', 'technology', 'entertainment']
+	genres = ['sports', 'politics', 'health', 'crime', 'business', 'technology', 'entertainment']
 	# locations = ['Varanasi', 'Uttar Pradesh']
 
-	genres = ['sports', 'crime', 'politics']
+	# genres = ['sports', 'crime', 'politics']
 	locations = ['Varanasi']
 
 	allowed_websites = ['https://indianexpress.com/', 'https://www.news18.com/', 'https://theprint.in', 'https://www.thehindu.com/', 
