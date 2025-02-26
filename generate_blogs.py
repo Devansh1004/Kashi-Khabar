@@ -36,8 +36,11 @@ def fetch_news():
 	db = client["my_articles"]
 	collection = db["news_articles"]
 
-	genres = ['sports', 'politics', 'health', 'crime', 'business', 'technology', 'entertainment']
-	locations = ['Varanasi', 'Uttar Pradesh']
+	# genres = ['sports', 'politics', 'health', 'crime', 'business', 'technology', 'entertainment']
+	# locations = ['Varanasi', 'Uttar Pradesh']
+
+	genres = ['sports']
+	locations = ['Varanasi']
 
 	allowed_websites = ['https://indianexpress.com/', 'https://www.news18.com/', 'https://theprint.in', 'https://www.thehindu.com/', 
 						'https://www.devdiscourse.com/', 'https://markets.businessinsider.com/', 'https://timesofindia.indiatimes.com/']
@@ -435,6 +438,6 @@ main {
 if __name__ == '__main__':
 	news = fetch_news()
 	for article in news:
-		directory = os.path.join("public\\articles", article['_id'])
+		directory = os.path.join("public/articles", article['_id'])
 		generate_news_page(article=article, directory=directory)
 	
