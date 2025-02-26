@@ -12,6 +12,5 @@ cloudinary
 bs4
 pymongo[srv]
 uuid
-time
 re
 requests
