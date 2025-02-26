@@ -5,6 +5,10 @@ let isConnected;
 
 export default async function handler(req, res) {
     try {
+        // Set CORS headers
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'GET');
+
         if (!MONGO_URI) {
             return res.status(500).json({ error: "MongoDB URI is missing" });
         }
@@ -34,7 +38,7 @@ export default async function handler(req, res) {
             articles = await collection.find({
                 $or: [
                     { title: { $regex: q, $options: "i" } }, // Case-insensitive search in title
-                    { keywords: { $in: [new RegExp(q, "i")] } } // Case-insensitive search in description
+                    { keywords: { $in: [new RegExp(q, "i")] } } // Case-insensitive search in keywords
                 ]
             }).sort({ time: -1 }).toArray();
         } else {
@@ -42,7 +46,7 @@ export default async function handler(req, res) {
             articles = await collection.find().sort({ time: -1 }).toArray();
         }
 
-        console.log("Retrieved articles:", articles); // Log retrieved articles
+        console.log("Retrieved articles:", articles.length); // Log the number of articles retrieved
         res.status(200).json(articles);
     } catch (error) {
         console.error("Internal Server Error:", error); // Log the error message
