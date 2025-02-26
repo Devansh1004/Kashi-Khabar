@@ -2,7 +2,6 @@ import re
 import os
 import time
 import re
-import json
 import pymongo
 from dotenv import load_dotenv
 load_dotenv()
@@ -12,6 +11,7 @@ HF_TOKEN = os.getenv('HF_TOKEN')
 GROQ_API_KEY_SUMMARY = os.getenv('GROQ_API_KEY_1')
 GROQ_API_KEY_TRANSLATE = os.getenv('GROQ_API_KEY_2')
 CLOUDINARY_API_SECRET = os.getenv('CLOUDINARY_API_SECRET')
+MONGO_URI = os.getenv('MONGO_URI')
 
 project_path = "https://kashi-khabar.vercel.app/"
 
@@ -32,7 +32,6 @@ import time
 def fetch_news():
 	wrapper = DuckDuckGoSearchAPIWrapper(region='in-en', time='d')
 	search = DuckDuckGoSearchResults(api_wrapper=wrapper, backend = 'news', num_results=7, output_format='list')
-	MONGO_URI = os.getenv('MONGO_URI')
 	client = pymongo.MongoClient(MONGO_URI)
 	db = client["my_articles"]
 	collection = db["news_articles"]
