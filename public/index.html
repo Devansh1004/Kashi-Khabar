@@ -5,19 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kashi Khabar - Home</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta name="description" content="Latest news articles from Varanasi at Kashi Khabar. Stay updated with the current events from Varanasi!">
     <meta name="keywords" content="news, articles, Kashi Khabar, current events, Varanasi, latest, latest news, Banaras, Kashi">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1>Kashi Khabar</h1>
-        <div class="search-container">
-            <input type="text" id="searchBar" placeholder="Search articles...">
-            <button id="searchButton"><i class="fas fa-search"></i></button>
+        <div class="header-content">
+            <h1>Kashi Khabar</h1>
+            <div class="header-actions">
+                <div class="search-container">
+                    <input type="text" id="searchBar" placeholder="Search articles...">
+                    <button id="searchButton"><i class="fas fa-search"></i></button>
+                </div>
+                <button id="nightModeButton"><i class="fas fa-moon"></i></button>
+            </div>
         </div>
-        <button id="nightModeButton"><i class="fas fa-moon"></i></button>
     </header>
     <div id="container">
         <aside id="sidebar">
@@ -33,7 +38,8 @@
             </div>
         </aside>
         <main>
-            <div id="articles-container"></div>
+            <div id="articles-container">
+            </div>
         </main>
     </div>
     <footer>
