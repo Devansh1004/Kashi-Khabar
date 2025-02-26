@@ -25,7 +25,7 @@ function searchArticles() {
     if (query.length === 0 && selectedGenres.length === 0) {
         fetchArticles(); // Fetch all articles if no query and no selected genres
     } else {
-        fetch(`/api/search?q=${encodeURIComponent(query)}&genres=${encodeURIComponent(selectedGenres.join(','))}`)
+        fetch(`/api/search?q=${encodeURIComponent(query)}`)
             .then(response => response.json())
             .then(data => displayArticles(data))
             .catch(error => console.error("Error fetching search results:", error));
