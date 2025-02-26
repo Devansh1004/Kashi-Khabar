@@ -13,22 +13,24 @@
 <body>
     <header>
         <h1>Kashi Khabar</h1>
-		<div>
-			<input type="text" id="searchBar" placeholder="Search articles...">
-			<button id="searchButton">Search</button>
-		</div>
+        <div class="search-container">
+            <input type="text" id="searchBar" placeholder="Search articles...">
+            <button id="searchButton"><i class="fas fa-search"></i></button>
+        </div>
         <button id="nightModeButton"><i class="fas fa-moon"></i></button>
     </header>
     <div id="container">
         <aside id="sidebar">
             <h2>Genres</h2>
-            <label><input type="checkbox" value="sports" onchange="filterArticles()"> Sports</label><br>
-            <label><input type="checkbox" value="politics" onchange="filterArticles()"> Politics</label><br>
-            <label><input type="checkbox" value="health" onchange="filterArticles()"> Health</label><br>
-            <label><input type="checkbox" value="crime" onchange="filterArticles()"> Crime</label><br>
-            <label><input type="checkbox" value="business" onchange="filterArticles()"> Business</label><br>
-            <label><input type="checkbox" value="technology" onchange="filterArticles()"> Technology</label><br>
-			<label><input type="checkbox" value="entertainment" onchange="filterArticles()"> Entertainment</label><br>
+            <div class="genre-list">
+                <label><input type="checkbox" value="sports" onchange="filterArticles()"> Sports</label>
+                <label><input type="checkbox" value="politics" onchange="filterArticles()"> Politics</label>
+                <label><input type="checkbox" value="health" onchange="filterArticles()"> Health</label>
+                <label><input type="checkbox" value="crime" onchange="filterArticles()"> Crime</label>
+                <label><input type="checkbox" value="business" onchange="filterArticles()"> Business</label>
+                <label><input type="checkbox" value="technology" onchange="filterArticles()"> Technology</label>
+                <label><input type="checkbox" value="entertainment" onchange="filterArticles()"> Entertainment</label>
+            </div>
         </aside>
         <main>
             <div id="articles-container"></div>
