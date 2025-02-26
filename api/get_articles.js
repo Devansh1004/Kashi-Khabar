@@ -47,7 +47,7 @@ export default async function handler(req, res) {
         }
 
         console.log("Retrieved articles:", articles.length); // Log the number of articles retrieved
-        res.status(200).json(articles);
+        res.status(200).send(200,articles,"success");
     } catch (error) {
         console.error("Internal Server Error:", error); // Log the error message
         return res.status(500).json({ error: error.message || "Internal Server Error" });
