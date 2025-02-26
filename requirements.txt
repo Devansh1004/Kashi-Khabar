@@ -1,0 +1,16 @@
+langchain
+langchain_community
+python-dotenv
+langchain_groq
+duckduckgo-search
+gradio-client
+pillow
+huggingface-hub
+uvicorn
+fastapi
+cloudinary
+bs4
+pymongo[srv]
+uuid
+time
+re

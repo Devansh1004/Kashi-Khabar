@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kashi Khabar - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Latest news articles from Varanasi at Kashi Khabar. Stay updated with the current events from Varanasi!">
+    <meta name="keywords" content="news, articles, Kashi Khabar, current events, Varanasi, latest, latest news, Banaras, Kashi">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Kashi Khabar</h1>
+		<div>
+			<input type="text" id="searchBar" placeholder="Search articles...">
+			<button id="searchButton">Search</button>
+		</div>
+        <button id="nightModeButton"><i class="fas fa-moon"></i></button>
+    </header>
+    <div id="container">
+        <aside id="sidebar">
+            <h2>Genres</h2>
+            <label><input type="checkbox" value="sports" onchange="filterArticles()"> Sports</label><br>
+            <label><input type="checkbox" value="politics" onchange="filterArticles()"> Politics</label><br>
+            <label><input type="checkbox" value="health" onchange="filterArticles()"> Health</label><br>
+            <label><input type="checkbox" value="crime" onchange="filterArticles()"> Crime</label><br>
+            <label><input type="checkbox" value="business" onchange="filterArticles()"> Business</label><br>
+            <label><input type="checkbox" value="technology" onchange="filterArticles()"> Technology</label><br>
+			<label><input type="checkbox" value="entertainment" onchange="filterArticles()"> Entertainment</label><br>
+        </aside>
+        <main>
+            <div id="articles-container"></div>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2025 Kashi Khabar. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
