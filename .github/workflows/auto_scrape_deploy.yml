@@ -32,12 +32,13 @@ jobs:
 
       
       - name: Run scraper
-        MONGO_URI: ${{ secrets.MONGO_URI }}
-        USER_AGENT: ${{ secrets.USER_AGENT }}
-        HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
-        GROQ_API_KEY_2: ${{ secrets.GROQ_API_KEY_2 }}
-        CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          USER_AGENT: ${{ secrets.USER_AGENT }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          GROQ_API_KEY_1: ${{ secrets.GROQ_API_KEY_1 }}
+          GROQ_API_KEY_2: ${{ secrets.GROQ_API_KEY_2 }}
+          CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
         run: python generate_blogs.py
         
       - name: Commit and push changes
