@@ -4,19 +4,16 @@ const MONGO_URI = process.env.MONGO_URI;
 let isConnected;
 
 export default async function handler(req, res) {
-	
-	
-    // Enable CORS
-    // res.setHeader('Access-Control-Allow-Origin', '*');
-    // res.setHeader('Access-Control-Allow-Methods',['GET','POST']);
-
     try {
         if (!MONGO_URI) {
             return res.status(500).json({ error: "MongoDB URI is missing" });
         }
 
         // Connect to MongoDB if not already connected
-        if (!isConnected) {
+		if (isConnected) {
+            console.log("Using existing MongoDB connection");
+		}
+        else {
             console.log("Connecting to MongoDB...");
             await mongoose.connect(MONGO_URI, {
                 useNewUrlParser: true,
@@ -30,13 +27,13 @@ export default async function handler(req, res) {
         const collection = db.collection("news_articles");
 
         // Check for search query
-        const { searchQuery } = req.query; 
+        const { q } = req.query; 
 		console.log(req.body);
 		
 		// Retrieve the search query from the request
         let articles;
 
-        if (searchQuery!=undefined) {
+        if (q) {
             // Perform search based on keywords in the title or keywords array
             articles = await collection.find({
                 $or: [
@@ -44,15 +41,12 @@ export default async function handler(req, res) {
                     { keywords: { $in: [new RegExp(q, "i")] } } // Case-insensitive search in keywords
                 ]
             }).sort({ time: -1 }).toArray();
-			res.send(articles)
         } else {
-            // If no query is provided, retrieve all articles
+            // If no query provided, retrieve all articles
             articles = await collection.find().sort({ time: -1 }).toArray();
-			res.send(articles)
         }
 
-        console.log("Retrieved articles:", articles.length); // Log the number of articles retrieved
-       // res.status(200).json({ status: "success", data: articles }); // Send response
+        console.log("Retrieved articles:", articles); // Log the number of articles retrieved
     } catch (error) {
         console.error("Internal Server Error:", error); // Log the error message
         res.status(500).json({ error: error.message || "Internal Server Error" });

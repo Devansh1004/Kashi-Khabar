@@ -26,22 +26,10 @@ async function searchArticles() {
     if (query.length === 0 && selectedGenres.length === 0) {
         fetchArticles(); // Fetch all articles if no query and no selected genres
     } else {
-        try {
-            console.log(encodeURIComponent(query));
-            let response = await fetch(`/api/fetch_search`,{
-				body:JSON.stringify({search:query}),
-				method:"post",
-				headers: {
-					'Content-Type': 'application/json' // Ensure the server knows it's receiving JSON
-				}
-			});
-            response = await response.json();
-            console.log("data received", response);
-            displayArticles(response.data); // Display the articles
-        } catch (error) {
-            console.log(error);
-            alert("An error occurred while fetching articles. Please try again."); // User-friendly error message
-        }
+        fetch(`/api/search?q=${encodeURIComponent(query)}&genres=${encodeURIComponent(selectedGenres.join(','))}`)
+            .then(response => response.json())
+            .then(data => displayArticles(data))
+            .catch(error => console.error("Error fetching search results:", error));
     }
 }
 
@@ -91,7 +79,7 @@ function displayArticles(articles) {
         return;
     }
 
-    articles?.forEach(article => {
+    articles.forEach(article => {
         const capsule = document.createElement("div");
         capsule.classList.add("capsule");
         capsule.style.cursor = 'pointer';
