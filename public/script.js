@@ -17,11 +17,9 @@ window.onload = function () {
     fetchArticles();
 };
 
-async function searchArticles() {
-    let query = document.getElementById("searchBar").value.trim();
-	
+function searchArticles() {
+    const query = document.getElementById("searchBar").value.trim();
     const selectedGenres = getSelectedGenres();
-    console.log(selectedGenres);
 
     if (query.length === 0 && selectedGenres.length === 0) {
         fetchArticles(); // Fetch all articles if no query and no selected genres
