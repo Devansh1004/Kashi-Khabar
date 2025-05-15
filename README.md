@@ -5,7 +5,7 @@ An end-to-end automated system that scrapes news articles from the web, summariz
 ## Features
 
 * Scrapes news articles from multiple sources using LangChain and DuckDuckGoSearch
-* Performs advanced NLP summarization to generate concise news summaries
+* Performs advanced NLP summarization using Groq API to generate concise news summaries
 * Automatically creates relevant images for articles via Hugging Face Spaces and Gradio API
 * Generates and deploys a dynamic news website with categorized sections and search functionality
 * Automated update workflow that runs every 6 hours to keep content fresh
@@ -18,16 +18,16 @@ An end-to-end automated system that scrapes news articles from the web, summariz
 * Hugging Face Spaces & Gradio API (image generation)
 * MongoDB (data storage)
 * GitHub Actions (automation & CI/CD)
-* Web Hosting: Vercel or Streamlit for deployment
-* Frontend: Express.js with search and filtering UI
+* Web Hosting: Vercel for deployment
+* Frontend: Basic HTML, CSS, JS with search and filtering UI
 
 ## Installation
 
 1. Clone the repo:
 
    ```bash
-   git clone https://github.com/yourusername/news-scraper-summarizer.git
-   cd news-scraper-summarizer
+   git clone https://github.com/Devansh1004/Kashi-Khabar.git
+   cd Kashi-Khabar
    ```
 
 2. Install required packages:
@@ -48,7 +48,7 @@ An end-to-end automated system that scrapes news articles from the web, summariz
 * Run the scraping and summarization script manually:
 
   ```bash
-  python scrape_and_summarize.py
+  python generate_blogs.py
   ```
 
 * Or rely on GitHub Actions workflow that triggers every 6 hours to update news automatically.
@@ -58,15 +58,10 @@ An end-to-end automated system that scrapes news articles from the web, summariz
 ## Project Structure
 
 ```
-├── scrape_and_summarize.py       # Main script to scrape, summarize, generate images
-├── web_app/                     # Frontend source code and deployment files
-├── data/                        # Stored news articles and metadata (optional)
-├── workflows/                   # GitHub Actions workflow config files
+├── generate_blogs.py            # Main script to scrape, summarize, generate images
+├── public/                      # Frontend source code and stored news articles
+├── api/                         # JS API to fetch content from MongoDB
 ├── requirements.txt             # Python dependencies
 ├── README.md                    # Project documentation
-└── .env.example                 # Example environment variables file
+├── vercel.json                  # Vercel setup 
 ```
-
-## Contributing
-
-Contributions are welcome! Feel free to open issues or submit pull requests for new features, bug fixes, or improvements.
